@@ -18,7 +18,9 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'devise'
 gem 'bootstrap', '~> 4.0.0.beta'
+gem 'devise-bootstrap-views'
 gem 'jquery-rails', '~> 4.3.1'
 
 gem 'rubocop', '~> 0.50.0', require: false
@@ -34,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', platforms: :ruby
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
