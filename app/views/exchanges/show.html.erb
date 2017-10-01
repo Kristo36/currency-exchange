@@ -1,0 +1,41 @@
+<h1>Showing Exchange</h1>
+
+<p>Base currency: <%= @exchange.base %> </p>
+<p>Target currency: <%= @exchange.target %> </p>
+<p>Amount: <%= @exchange.amount %> </p>
+<p>Weeks: <%= @exchange.weeks %> </p>
+<p>avg_rate: <%= @exchange.avg_rate %> </p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Year and week</th>
+    <th>Exchange rate</th>
+    <th>Amount (converted)</th>
+    <th>Profit/Loss</th>
+    <th>Rank</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= @average_rate %>
+    <% @exchange_calculations.each do |exchange| %>
+      <tr>
+        <th scope="row">
+          <%= exchange[:year].to_s %>: week <%= exchange[:week].to_s %>
+        </th>
+        <td>
+          <%= exchange[:rate].to_s %>
+        </td>
+        <td>
+          <%= exchange[:amount].to_s %>
+        </td>
+        <td>
+          <%= exchange[:profit].to_s %>
+        </td>
+        <td>
+          <%= exchange[:rank].to_s %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

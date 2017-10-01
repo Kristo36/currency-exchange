@@ -22,6 +22,7 @@ gem 'devise'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'devise-bootstrap-views'
 gem 'jquery-rails', '~> 4.3.1'
+gem 'httparty', '0.15.6'
 
 gem 'rubocop', '~> 0.50.0', require: false
 

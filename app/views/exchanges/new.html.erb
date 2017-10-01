@@ -1,0 +1,47 @@
+<div class="container">
+
+  <%= form_for @exchange do |f| %>
+
+      <div class="form-group row">
+        <%= f.label :base, 'Base currency', class: 'col-sm-3 col-form-label' %>
+        <div class="col-sm-9">
+          <%= f.select :base, options_for_select([['AUD', 'AUD'], ['BGN', 'BGN'], ['BRL', 'BRL'],
+                                                  ['CAD', 'CAD'], ['CHF', 'CHF'], ['CNY', 'CNY'],
+                                                  ['CZK', 'CZK'], ['DKK', 'DKK'], ['EUR', 'EUR'],
+                                                  ['GBP', 'GBP'], ['HKD', 'HKD'], ['HRK', 'HRK'],
+                                                  ['HUF', 'HUF'], ['IDR', 'IDR'], ['ILS', 'ILS'],
+                                                  ['INR', 'INR'], ['USD', 'USD']], @exchange.base), {}, {class: 'form-control'} %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :target, 'Target currency', class: 'col-sm-3 col-form-label' %>
+        <div class="col-sm-9">
+          <%= f.select :target, options_for_select([['AUD', 'AUD'], ['BGN', 'BGN'], ['BRL', 'BRL'],
+                                                  ['CAD', 'CAD'], ['CHF', 'CHF'], ['CNY', 'CNY'],
+                                                  ['CZK', 'CZK'], ['DKK', 'DKK'], ['EUR', 'EUR'],
+                                                  ['GBP', 'GBP'], ['HKD', 'HKD'], ['HRK', 'HRK'],
+                                                  ['HUF', 'HUF'], ['IDR', 'IDR'], ['ILS', 'ILS'],
+                                                  ['INR', 'INR'], ['USD', 'USD']], @exchange.target), {}, {class: 'form-control'} %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :amount, 'Amount', class: 'col-sm-3 col-form-label' %>
+        <div class="col-sm-9">
+          <%= f.text_field :amount, class: 'form-control', :value => (number_with_precision(f.object.amount, :precision => 2) || 0) %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :weeks, 'Max. waiting time', class: 'col-sm-3 col-form-label' %>
+        <div class="col-sm-9">
+          <%= f.number_field :weeks, class: 'form-control' %>
+        </div>
+      </div>
+
+      <%= f.submit 'Calculate', class: 'btn btn-primary' %>
+
+  <% end %>
+
+</div>
