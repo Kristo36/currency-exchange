@@ -17,8 +17,7 @@
   </tr>
   </thead>
   <tbody>
-  <%= @average_rate %>
-    <% @exchange_calculations.each do |exchange| %>
+    <% @exchange_calculations.each_value do |exchange| %>
       <tr>
         <th scope="row">
           <%= exchange[:year].to_s %>: week <%= exchange[:week].to_s %>
@@ -38,4 +37,6 @@
       </tr>
     <% end %>
   </tbody>
+
+  <%= line_chart @exchange_calculations.each_value.pluck(:week, :rate), xtitle: 'week', ytitle: 'rate' %>
 </table>

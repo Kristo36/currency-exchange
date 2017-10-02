@@ -5,7 +5,7 @@ module ExchangesHelper
 
   def get_rates
 
-    exchange = []
+    exchange = {}
     currency_rates = []
     beginning_of_week = Date.today.beginning_of_week
 
@@ -24,12 +24,12 @@ module ExchangesHelper
         @currency_quote.save
       end
 
-      exchange << { year: beginning_of_week.year,
-                    week: beginning_of_week.cweek,
-                    base: @exchange.base,
-                    target: @exchange.target,
-                    rate: @currency_quote.rate.to_f,
-                    amount: @exchange.amount.to_f * @currency_quote.rate.to_f }
+      exchange[week] = { year: beginning_of_week.year,
+                         week: beginning_of_week.cweek,
+                         base: @exchange.base,
+                         target: @exchange.target,
+                         rate: @currency_quote.rate.to_f,
+                         amount: @exchange.amount.to_f * @currency_quote.rate.to_f }
 
       currency_rates << @currency_quote.rate.to_f
 
@@ -38,7 +38,11 @@ module ExchangesHelper
 
     calculate_rate_average(exchange)
     calculate_profits(exchange)
+    sorted_weeks = sort_by_profit(exchange)
 
+    3.times do |rank|
+      exchange[sorted_weeks[rank][0]][:rank] = rank + 1
+    end
     exchange
   end
 
@@ -49,8 +53,8 @@ module ExchangesHelper
 
   def calculate_rate_average(exchange_data)
     all_rates = []
-    exchange_data.each do |element|
-      all_rates << element[:rate]
+    exchange_data.each_value do |value|
+      all_rates << value[:rate]
     end
 
     avg_rate = all_rates.inject { |sum, el| sum + el }.to_f / all_rates.size
@@ -59,14 +63,14 @@ module ExchangesHelper
   end
 
   def calculate_profits(exchange_data)
-    exchange_data.each do |element|
-      element[:profit] = (@exchange.amount.to_f * element[:rate].to_f -
+    exchange_data.each_value do |value|
+      value[:profit] = (@exchange.amount.to_f * value[:rate].to_f -
           @exchange.amount.to_f * @exchange.avg_rate.to_f).round(2)
     end
   end
 
   def sort_by_profit(exchange_data)
-    exchange_data.sort { |a, b| b[:profit] <=> a[:profit] }
+    exchange_data.sort_by { |_k, v| v[:profit] }.reverse
   end
 
 end
