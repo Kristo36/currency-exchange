@@ -1,0 +1,41 @@
+<div class="container">
+
+    <div class="tab-pane fade show active" id="nav-table" role="tabpanel" aria-labelledby="nav-table-tab">
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Base</th>
+          <th>Target</th>
+          <th>Amount (converted)</th>
+          <th>Weeks</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @exchanges.each do |exchange| %>
+            <tr>
+              <th scope="row">
+                <%= exchange[:base].to_s %>
+              </th>
+              <td>
+                <%= exchange[:target].to_s %>
+              </td>
+              <td>
+                <%= exchange[:amount].to_s %>
+              </td>
+              <td>
+                <%= exchange[:weeks].to_s %>
+              </td>
+              <td>
+                <%= link_to 'Show', exchange_path(exchange) %>
+                <%= link_to 'Edit', edit_exchange_path(exchange) %>
+                <%= link_to 'Delete', exchange_path(exchange), method: :delete, data:{confirm: 'Are you sure?'}  %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>
+

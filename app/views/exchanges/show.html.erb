@@ -1,42 +1,65 @@
-<h1>Showing Exchange</h1>
+<div class="container">
 
-<p>Base currency: <%= @exchange.base %> </p>
-<p>Target currency: <%= @exchange.target %> </p>
-<p>Amount: <%= @exchange.amount %> </p>
-<p>Weeks: <%= @exchange.weeks %> </p>
-<p>avg_rate: <%= @exchange.avg_rate %> </p>
+  <h1>Showing Exchange</h1>
 
-<table class="table">
-  <thead>
-  <tr>
-    <th>Year and week</th>
-    <th>Exchange rate</th>
-    <th>Amount (converted)</th>
-    <th>Profit/Loss</th>
-    <th>Rank</th>
-  </tr>
-  </thead>
-  <tbody>
-    <% @exchange_calculations.each_value do |exchange| %>
-      <tr>
-        <th scope="row">
-          <%= exchange[:year].to_s %>: week <%= exchange[:week].to_s %>
-        </th>
-        <td>
-          <%= exchange[:rate].to_s %>
-        </td>
-        <td>
-          <%= exchange[:amount].to_s %>
-        </td>
-        <td>
-          <%= exchange[:profit].to_s %>
-        </td>
-        <td>
-          <%= exchange[:rank].to_s %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
+  <%= link_to 'Back', new_exchange_path %>
+  <%= link_to 'Edit', edit_exchange_path %>
 
-  <%= line_chart @exchange_calculations.each_value.pluck(:week, :rate), xtitle: 'week', ytitle: 'rate' %>
-</table>
+
+  <p>Base currency: <%= @exchange.base %> </p>
+  <p>Target currency: <%= @exchange.target %> </p>
+  <p>Amount: <%= @exchange.amount %> </p>
+  <p>Weeks: <%= @exchange.weeks %> </p>
+  <p>avg_rate: <%= @exchange.avg_rate %> </p>
+
+
+  <nav class="nav nav-tabs" id="exchangesTab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-table" role="tab" aria-controls="nav-home" aria-expanded="true">Table</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-graph" role="tab" aria-controls="nav-profile">Graph</a>
+  </nav>
+
+  <div class="tab-content" id="nav-tabContent">
+
+    <div class="tab-pane fade show active" id="nav-table" role="tabpanel" aria-labelledby="nav-table-tab">
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Year and week</th>
+          <th>Exchange rate</th>
+          <th>Amount (converted)</th>
+          <th>Profit/Loss</th>
+          <th>Rank</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @exchange_calculations.each_value do |exchange| %>
+            <tr>
+              <th scope="row">
+                <%= exchange[:year].to_s %>: week <%= exchange[:week].to_s %>
+              </th>
+              <td>
+                <%= exchange[:rate].to_s %>
+              </td>
+              <td>
+                <%= exchange[:amount].to_s %>
+              </td>
+              <td>
+                <%= exchange[:profit].to_s %>
+              </td>
+              <td>
+                <%= exchange[:rank].to_s %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tab-pane fade" id="nav-graph" role="tabpanel" aria-labelledby="nav-graph-tab">
+      <%= line_chart @exchange_calculations.each_value.pluck(:week, :profit), xtitle: 'week', ytitle: 'profit' %>
+    </div>
+
+  </div>
+</div>
+
