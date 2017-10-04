@@ -24,6 +24,8 @@ gem 'devise-bootstrap-views'
 gem 'jquery-rails', '~> 4.3.1'
 gem 'httparty', '0.15.6'
 gem 'chartkick', '2.2.4'
+# gem 'rspec', '3.6'
+
 
 gem 'rubocop', '~> 0.50.0', require: false
 
@@ -50,12 +52,20 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 3.6'
+
 end
 
 group :development do
   # Access an IRB console on exception pages or by using
   # <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
