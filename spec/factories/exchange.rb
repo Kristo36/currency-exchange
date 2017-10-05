@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :exchange, :class => 'Exchange' do
+  factory :exchange, class: 'Exchange' do
     base 'USD'
     target 'EUR'
     amount 100

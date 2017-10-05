@@ -41,7 +41,7 @@ class ExchangesController < ApplicationController
   def show
     @exchange = Exchange.find(params[:id])
 
-    @exchange_calculations = get_rates
+    @exchange_calculations = create_exchanges
 
     render :show
   end
@@ -57,5 +57,4 @@ class ExchangesController < ApplicationController
 
     redirect_to exchanges_path
   end
-
 end

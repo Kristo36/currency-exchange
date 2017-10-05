@@ -1,12 +1,9 @@
 # Exchanges helper
 module ExchangesHelper
-
   API_URL = 'http://api.fixer.io/'.freeze
 
-  def get_rates
-
+  def create_exchanges
     exchange = {}
-    currency_rates = []
     beginning_of_week = Date.today.beginning_of_week
     forecast_week = Date.today.beginning_of_week
 
@@ -24,8 +21,6 @@ module ExchangesHelper
                          rate: @currency_quote.rate.to_f,
                          amount: (@exchange.amount.to_f *
                                   @currency_quote.rate.to_f).round(2) }
-
-      currency_rates << @currency_quote.rate.to_f
 
       beginning_of_week -= 7
       forecast_week += 7
@@ -78,5 +73,4 @@ module ExchangesHelper
       exchange_data[sorted_weeks[rank][0]][:rank] = rank + 1
     end
   end
-
 end

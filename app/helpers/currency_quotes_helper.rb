@@ -1,3 +1,3 @@
-# Exchanges helper
+# CurrencyQuotes helper
 module CurrencyQuotesHelper
 end

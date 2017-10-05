@@ -18,14 +18,12 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'devise'
 gem 'bootstrap', '~> 4.0.0.beta'
-gem 'devise-bootstrap-views'
-gem 'jquery-rails', '~> 4.3.1'
-gem 'httparty', '0.15.6'
 gem 'chartkick', '2.2.4'
-# gem 'rspec', '3.6'
-
+gem 'devise'
+gem 'devise-bootstrap-views'
+gem 'httparty', '0.15.6'
+gem 'jquery-rails', '~> 4.3.1'
 
 gem 'rubocop', '~> 0.50.0', require: false
 
@@ -51,9 +49,9 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.6'
+  gem 'selenium-webdriver'
 
 end
 

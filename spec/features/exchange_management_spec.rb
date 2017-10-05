@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Exchange management', :type => :feature do
+RSpec.feature 'Exchange management', type: :feature do
   before :each do
     @exchanges_controller = ExchangesController.new
   end

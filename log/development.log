@@ -20911,3 +20911,129 @@ Processing by ExchangesController#show as HTML
 Completed 200 OK in 229ms (Views: 225.3ms | ActiveRecord: 1.5ms)
 
 
+Started GET "/exchanges/new" for 127.0.0.1 at 2017-10-06 00:05:31 +0300
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ExchangesController#new as HTML
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering exchanges/new.html.erb within layouts/application
+  Rendered exchanges/_messages.html.erb (0.5ms)
+  Rendered exchanges/_form.html.erb (41.0ms)
+  Rendered exchanges/new.html.erb within layouts/application (54.0ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.5ms)
+Completed 200 OK in 1060ms (Views: 992.5ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/exchanges" for 127.0.0.1 at 2017-10-06 00:06:11 +0300
+Processing by ExchangesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering exchanges/index.html.erb within layouts/application
+  [1m[36mExchange Load (2.5ms)[0m  [1m[34mSELECT "exchanges".* FROM "exchanges" WHERE "exchanges"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered exchanges/index.html.erb within layouts/application (5.5ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.5ms)
+Completed 200 OK in 239ms (Views: 233.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/exchanges/23" for 127.0.0.1 at 2017-10-06 00:06:13 +0300
+Processing by ExchangesController#show as HTML
+  Parameters: {"id"=>"23"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mExchange Load (0.5ms)[0m  [1m[34mSELECT  "exchanges".* FROM "exchanges" WHERE "exchanges"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (1.0ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "GBP"], ["date", "2017-10-02"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "GBP"], ["date", "2017-09-25"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "GBP"], ["date", "2017-09-18"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.0ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "GBP"], ["date", "2017-09-11"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.0ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "GBP"], ["date", "2017-09-04"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "GBP"], ["date", "2017-08-28"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "GBP"], ["date", "2017-08-21"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "GBP"], ["date", "2017-08-14"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "GBP"], ["date", "2017-08-07"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "GBP"], ["date", "2017-07-31"], ["LIMIT", 1]]
+  Rendering exchanges/show.html.erb within layouts/application
+  Rendered exchanges/show.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.5ms)
+Completed 200 OK in 254ms (Views: 222.1ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/exchanges/new" for 127.0.0.1 at 2017-10-06 00:06:14 +0300
+Processing by ExchangesController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering exchanges/new.html.erb within layouts/application
+  Rendered exchanges/_messages.html.erb (0.5ms)
+  Rendered exchanges/_form.html.erb (16.0ms)
+  Rendered exchanges/new.html.erb within layouts/application (23.5ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (2.0ms)
+Completed 200 OK in 261ms (Views: 251.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/exchanges" for 127.0.0.1 at 2017-10-06 00:06:21 +0300
+Processing by ExchangesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Llv/AMNGu9vw1AcSp4E659Qhg4DQ+Hv3i0/IadjFo2PapYCDbFo/Bty/SnXj+Pjd5O8yBVd+Mqh50OacurPEQw==", "exchange"=>{"base"=>"AUD", "target"=>"BGN", "amount"=>"111", "weeks"=>"22"}, "commit"=>"Calculate"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "exchanges" ("base", "target", "amount", "weeks", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["base", "AUD"], ["target", "BGN"], ["amount", "111.0"], ["weeks", 22], ["created_at", "2017-10-05 21:06:21.366283"], ["updated_at", "2017-10-05 21:06:21.366283"], ["user_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:4000/exchanges/29
+Completed 302 Found in 8ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/exchanges/29" for 127.0.0.1 at 2017-10-06 00:06:21 +0300
+Processing by ExchangesController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mExchange Load (0.0ms)[0m  [1m[34mSELECT  "exchanges".* FROM "exchanges" WHERE "exchanges"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.0ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-10-02"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-09-25"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-09-18"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-09-11"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.0ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-09-04"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.0ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-08-28"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-08-21"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-08-14"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-08-07"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-07-31"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.0ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-07-24"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.0ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-07-17"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.0ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-07-10"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.0ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-07-03"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-06-26"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-06-19"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.0ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-06-12"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.0ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-06-05"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-05-29"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-05-22"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.5ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-05-15"], ["LIMIT", 1]]
+  [1m[36mCurrencyQuote Load (0.0ms)[0m  [1m[34mSELECT  "currency_quotes".* FROM "currency_quotes" WHERE "currency_quotes"."base" = $1 AND "currency_quotes"."target" = $2 AND "currency_quotes"."date" = $3 LIMIT $4[0m  [["base", "AUD"], ["target", "BGN"], ["date", "2017-05-08"], ["LIMIT", 1]]
+  Rendering exchanges/show.html.erb within layouts/application
+  Rendered exchanges/show.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (1.0ms)
+Completed 200 OK in 234ms (Views: 217.0ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/exchanges/new" for 127.0.0.1 at 2017-10-06 00:07:01 +0300
+Processing by ExchangesController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering exchanges/new.html.erb within layouts/application
+  Rendered exchanges/_messages.html.erb (0.0ms)
+  Rendered exchanges/_form.html.erb (17.0ms)
+  Rendered exchanges/new.html.erb within layouts/application (24.5ms)
+  Rendered layouts/_navigation.html.erb (2.0ms)
+  Rendered layouts/_messages.html.erb (1.0ms)
+Completed 200 OK in 280ms (Views: 270.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/exchanges" for 127.0.0.1 at 2017-10-06 00:07:02 +0300
+Processing by ExchangesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering exchanges/index.html.erb within layouts/application
+  [1m[36mExchange Load (0.5ms)[0m  [1m[34mSELECT "exchanges".* FROM "exchanges" WHERE "exchanges"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered exchanges/index.html.erb within layouts/application (3.5ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.5ms)
+Completed 200 OK in 237ms (Views: 233.8ms | ActiveRecord: 1.0ms)
+
+
