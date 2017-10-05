@@ -4,5 +4,6 @@ FactoryGirl.define do
     target 'EUR'
     amount 100
     weeks 5
+    avg_rate 2
   end
 end

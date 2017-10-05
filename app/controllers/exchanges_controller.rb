@@ -1,13 +1,11 @@
-# Welcome controller
+# Exchanges controller
 class ExchangesController < ApplicationController
   include ExchangesHelper
   before_action :authenticate_user!
 
   def index
     @exchanges = Exchange.where(user_id: current_user.id)
-    # @exchanges = Exchange.all
 
-    # render plain: @exchanges
     render :index
   end
 

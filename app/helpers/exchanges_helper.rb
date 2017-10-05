@@ -11,25 +11,19 @@ module ExchangesHelper
     forecast_week = Date.today.beginning_of_week
 
     @exchange.weeks.times do |week|
-      @currency_quote = CurrencyQuote.find_by(base: @exchange.base,
-                                              target: @exchange.target,
-                                              date: beginning_of_week)
+      @currency_quote = CurrencyQuote.search_existing(@exchange.base,
+                                                      @exchange.target,
+                                                      beginning_of_week)
 
-      unless @currency_quote
-        api_data = HTTParty.get week_query(beginning_of_week)
-        @currency_quote = CurrencyQuote.new(base: @exchange.base,
-                                            target: @exchange.target,
-                                            date: beginning_of_week,
-                                            rate: api_data['rates'][@exchange.target])
-        @currency_quote.save
-      end
+      request_quote(beginning_of_week) unless @currency_quote
 
       exchange[week] = { year: forecast_week.year,
                          week: forecast_week.cweek,
                          base: @exchange.base,
                          target: @exchange.target,
                          rate: @currency_quote.rate.to_f,
-                         amount: @exchange.amount.to_f * @currency_quote.rate.to_f }
+                         amount: (@exchange.amount.to_f *
+                                  @currency_quote.rate.to_f).round(2) }
 
       currency_rates << @currency_quote.rate.to_f
 
@@ -39,13 +33,18 @@ module ExchangesHelper
 
     calculate_rate_average(exchange)
     calculate_profits(exchange)
-    sorted_weeks = sort_by_profit(exchange)
-
-    3.times do |rank|
-      exchange[sorted_weeks[rank][0]][:rank] = rank + 1
-    end
+    rank_by_profit(exchange)
 
     exchange
+  end
+
+  def request_quote(beginning_of_week)
+    api_data = HTTParty.get week_query(beginning_of_week)
+    @currency_quote = CurrencyQuote.new(base: @exchange.base,
+                                        target: @exchange.target,
+                                        date: beginning_of_week,
+                                        rate: api_data['rates'][@exchange.target])
+    @currency_quote.save
   end
 
   def week_query(date)
@@ -71,8 +70,13 @@ module ExchangesHelper
     end
   end
 
-  def sort_by_profit(exchange_data)
-    exchange_data.sort_by { |_k, v| v[:profit] }.reverse
+  def rank_by_profit(exchange_data)
+    sorted_weeks = exchange_data.sort_by { |_k, v| v[:profit] }.reverse
+
+    top_ranks = [3, sorted_weeks.count].min
+    top_ranks.times do |rank|
+      exchange_data[sorted_weeks[rank][0]][:rank] = rank + 1
+    end
   end
 
 end

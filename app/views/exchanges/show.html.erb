@@ -1,16 +1,41 @@
 <div class="container">
 
-  <h1>Showing Exchange</h1>
+  <h1>
+    <span>Showing Exchange</span>
+    <%= link_to '<button type="button" class="btn btn-primary">Edit</button>'.html_safe, edit_exchange_path %>
+  </h1>
 
-  <%= link_to 'Back', new_exchange_path %>
-  <%= link_to 'Edit', edit_exchange_path %>
+  <div class="row">
+
+    <div class="col-sm-6">
+      <div>
+        <label>Base currency: </label>
+        <span><%= @exchange.base %></span>
+      </div>
+      <div>
+        <label>Target currency: </label>
+        <span><%= @exchange.target %></span>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div>
+        <label>Amount: </label>
+        <span><%= @exchange.amount %></span>
+      </div>
+      <div>
+        <label>Weeks: </label>
+        <span><%= @exchange.weeks %></span>
+      </div>
+      <div>
+        <label>Average rate: </label>
+        <span><%= @exchange.avg_rate %></span>
+      </div>
+    </div>
+
+  </div>
 
 
-  <p>Base currency: <%= @exchange.base %> </p>
-  <p>Target currency: <%= @exchange.target %> </p>
-  <p>Amount: <%= @exchange.amount %> </p>
-  <p>Weeks: <%= @exchange.weeks %> </p>
-  <p>avg_rate: <%= @exchange.avg_rate %> </p>
 
 
   <nav class="nav nav-tabs" id="exchangesTab" role="tablist">
@@ -42,7 +67,7 @@
                 <%= exchange[:rate].to_s %>
               </td>
               <td>
-                <%= exchange[:amount].to_s %>
+                <%= exchange[:amount].to_s %> <%= @exchange.target %>
               </td>
               <td>
                 <%= exchange[:profit].to_s %>
